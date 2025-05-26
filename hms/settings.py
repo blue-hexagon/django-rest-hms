@@ -4,11 +4,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-=_5yj+8xl67&6n)1tf7-0m_6zh_9e8qmeii@guzo_r@*-a_v@$"
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 if not DEBUG:
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+    USE_X_FORWARDED_HOST = True
+    USE_X_FORWARDED_PORT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://hms.nhi.it",
+]
+
 # ALLOWED_HOSTS = ["127.0.0.1", "localhost", "*"]
 
 INTERNAL_IPS = ["127.0.0.1", "::1", "*"]
@@ -70,7 +78,7 @@ DATABASES = {
         "NAME": "hms_db",
         "USER": "hms_user",
         "PASSWORD": "Kode1234!",
-        "HOST": "localhost",
+        "HOST": "192.168.10.25",
         "PORT": 5432,
     }
 }
@@ -96,10 +104,10 @@ USE_I18N = True
 USE_TZ = True
 
 # STATIC_URL = "/static/"
-STATIC_URL = '/staticfiles/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'app' / 'static' / 'app',
+    BASE_DIR / 'app' / 'staticfiles' / 'app',
 ]
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
