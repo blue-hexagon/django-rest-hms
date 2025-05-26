@@ -70,7 +70,7 @@ DATABASES = {
         "NAME": "hms_db",
         "USER": "hms_user",
         "PASSWORD": "Kode1234!",
-        "HOST": "localhost",
+        "HOST": "192.168.10.25",
         "PORT": 5432,
     }
 }
