@@ -3,7 +3,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-=_5yj+8xl67&6n)1tf7-0m_6zh_9e8qmeii@guzo_r@*-a_v@$"
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ["*"]
 if not DEBUG:
     SECURE_SSL_REDIRECT = False
@@ -11,12 +11,15 @@ if not DEBUG:
     CSRF_COOKIE_SECURE = True
     USE_X_FORWARDED_HOST = True
     USE_X_FORWARDED_PORT = True
+    CORS_ALLOW_CREDENTIALS = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 CSRF_TRUSTED_ORIGINS = [
     "https://hms.nhi.it",
 ]
-
+CORS_ALLOWED_ORIGINS = [
+    "https://hms.nhi.it",
+]
 # ALLOWED_HOSTS = ["127.0.0.1", "localhost", "*"]
 
 INTERNAL_IPS = ["127.0.0.1", "::1", "*"]
@@ -27,11 +30,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'corsheaders',
     'app',
     'rest_framework'
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
