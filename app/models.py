@@ -9,7 +9,7 @@ class Patient(models.Model):
     email = models.EmailField()
     gender = models.CharField(max_length=10, choices=[('Male', 'Male'), ('Female', 'Female')])
     address = models.TextField()
-    file = models.FileField(upload_to='patients/')
+    file = models.FileField(upload_to='patients/',blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -29,7 +29,7 @@ class Doctor(models.Model):
     email = models.EmailField()
     gender = models.CharField(max_length=10, choices=[('Male', 'Male'), ('Female', 'Female')])
     address = models.TextField()
-    file = models.FileField(upload_to='doctors/')
+    file = models.FileField(upload_to='doctors/', blank=True, null=True)
     availability = models.CharField(max_length=20, choices=AVAILABILITY_CHOICES, default='Available')
 
     def __str__(self):

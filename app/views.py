@@ -2,7 +2,7 @@
 from rest_framework import viewsets
 from .models import Patient, Doctor, Appointment, Payment, RoomAllotment,Service
 from .serializers import ServiceSerializer,PatientSerializer, DoctorSerializer, AppointmentSerializer,AppointmentCreateSerializer,AppointmentUpdateSerializer, PaymentSerializer, RoomAllotmentSerializer
-
+from rest_framework.parsers import MultiPartParser, FormParser
 class ServiceViewset(viewsets.ModelViewSet):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
@@ -10,7 +10,8 @@ class ServiceViewset(viewsets.ModelViewSet):
 class PatientViewSet(viewsets.ModelViewSet):
     queryset = Patient.objects.all()
     serializer_class = PatientSerializer
-from rest_framework.parsers import MultiPartParser, FormParser
+    parser_classes = (MultiPartParser, FormParser)
+
 from rest_framework.generics import UpdateAPIView
 from rest_framework.response import Response
 

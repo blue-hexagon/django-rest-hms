@@ -315,7 +315,7 @@ $('#payment-form').on('submit', function (e) {
         console.log(key, value);
     }
 
-    fetch('http://127.0.0.1:8000/api/payments/', {
+    fetch('/api/payments/', {
         method: 'POST',
         headers: {
             'X-CSRFToken': getCookie('csrftoken') // Ensure you handle CSRF tokens appropriately

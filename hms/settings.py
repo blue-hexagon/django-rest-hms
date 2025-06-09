@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = "django-insecure-=_5yj+8xl67&6n)1tf7-0m_6zh_9e8qmeii@guzo_r@*-a_v@$"
@@ -19,6 +19,8 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "https://hms.nhi.it",
+    "192.168.10.21",
+    "192.168.10.22"
 ]
 # ALLOWED_HOSTS = ["127.0.0.1", "localhost", "*"]
 
